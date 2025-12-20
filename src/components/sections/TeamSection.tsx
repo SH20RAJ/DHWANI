@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ProfileCard } from '../ui/profile-card';
+import GlowingCard from '../mvpblocks/glow-card';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const execMembers = [
@@ -65,6 +66,14 @@ export const TeamSection = () => {
                     <p className="text-gray-400 max-w-2xl mx-auto">
                         The talented individuals behind the rhythm and soul of Dhwani.
                     </p>
+
+                    <div className="flex justify-center mt-12 mb-16">
+                        <GlowingCard
+                            name="Aditi Sharma"
+                            role="President"
+                            image="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        />
+                    </div>
 
                     <div className="flex justify-center mt-8 gap-4">
                         <button

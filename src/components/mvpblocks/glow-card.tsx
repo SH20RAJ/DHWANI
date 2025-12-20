@@ -1,10 +1,31 @@
 'use client';
 
-export default function GlowingCard() {
+import Image from 'next/image';
+
+interface GlowingCardProps {
+  name?: string;
+  role?: string;
+  image?: string;
+}
+
+export default function GlowingCard({
+  name = "Shaswat Raj",
+  role = "President",
+  image = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop"
+}: GlowingCardProps) {
   return (
     <>
       <div className="card">
-        I glow :)
+        <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-white/20">
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-cover"
+          />
+        </div>
+        <h3 className="text-xl font-bold text-white mb-1">{name}</h3>
+        <p className="text-blue-400 text-sm tracking-widest uppercase">{role}</p>
         <div className="glow" />
       </div>
 
@@ -24,45 +45,55 @@ export default function GlowingCard() {
         .card {
           position: relative;
           overflow: hidden;
-          width: min(12.5em, 80vmin);
-          aspect-ratio: 1;
-          border-radius: 0.5em;
+          width: 300px;
+          height: 350px; /* Fixed height for consistency */
+          border-radius: 1.5rem;
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
 
-          display: grid;
-          place-self: center;
-          place-content: center;
-          padding: 0.5em;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          
           color: #ededed;
-          font: clamp(1em, 2vw + 2vh, 2em) sans-serif;
           text-align: center;
-          text-transform: uppercase;
-          text-wrap: balance;
+          z-index: 10;
         }
 
         .glow {
           content: '';
           position: absolute;
           z-index: -1;
-          inset: -1em;
-          border: solid 1.25em;
-          border-image: conic-gradient(
+          inset: -2px; /* Thinner border */
+          border-radius: 1.6rem; /* Match card radius + inset */
+          padding: 2px; /* Border width */
+          background: conic-gradient(
               from var(--a),
-              #669900,
-              #99cc33,
-              #ccee66,
-              #006699,
-              #3399cc,
-              #990066,
-              #cc3399,
-              #ff6600,
-              #ff9900,
-              #ffcc00,
-              #669900
-            )
-            1;
-          filter: blur(0.75em);
+              #3b82f6, /* Blue 500 */
+              #8b5cf6, /* Purple 500 */
+              #06b6d4, /* Cyan 500 */
+              #3b82f6
+            );
+          mask: 
+            linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+          mask-composite: exclude;
           animation: a 4s linear infinite;
-          pointer-events: none;
+        }
+        
+        /* Optional: Add a subtle background glow behind the card */
+         .card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+            z-index: -2;
+            pointer-events: none;
         }
       `}</style>
     </>

@@ -1,7 +1,6 @@
 'use client';
 
-import { Instagram, Linkedin, Twitter, Youtube, Music } from 'lucide-react';
-import Image from 'next/image';
+import { Instagram, Linkedin, Youtube, Music } from 'lucide-react';
 
 const footerColumns = [
   {
