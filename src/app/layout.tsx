@@ -25,12 +25,30 @@ export const metadata: Metadata = {
 		title: "DHWANI - Music Club of BIT Mesra",
 		description: "The official website of Dhwani, the Music Club of BIT Mesra. Join us for events, workshops, and musical jamming sessions.",
 		siteName: "Dhwani Music Club",
+		images: [
+			{
+				url: "/og-image.png",
+				width: 1200,
+				height: 630,
+				alt: "Dhwani Music Club",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "DHWANI - Music Club of BIT Mesra",
 		description: "The official website of Dhwani, the Music Club of BIT Mesra.",
 		creator: "@dhwanibitmesra",
+		images: ["/og-image.png"],
+	},
+	manifest: "/manifest.json",
+	appleWebApp: {
+		capable: true,
+		statusBarStyle: "default",
+		title: "DHWANI",
+	},
+	formatDetection: {
+		telephone: false,
 	},
 	robots: {
 		index: true,
@@ -53,7 +71,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
-				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
+				<link rel="icon" href="/favicon.png"></link>
+				<link rel="apple-touch-icon" href="/icon-192.png"></link>
 			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
 		</html>
