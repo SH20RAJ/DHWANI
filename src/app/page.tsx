@@ -1,13 +1,13 @@
 import { HeroSection } from "@/components/ui/hero-odyssey";
 import dynamic from 'next/dynamic';
 import { EventsSection } from "@/components/sections/EventsSection";
-import { TeamSection } from "@/components/sections/TeamSection";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { MusicSection } from "@/components/sections/MusicSection";
 import { NewsSection } from "@/components/sections/NewsSection";
 import { LegacySection } from "@/components/sections/LegacySection";
-
+import GlowingCard from "@/components/mvpblocks/glow-card";
+import Link from "next/link";
 
 const FooterNewsletter = dynamic(() => import('@/components/mvpblocks/footer-newsletter'));
 const DhwaniFeatures = dynamic(() => import('@/components/mvpblocks/feature-3'));
@@ -19,7 +19,26 @@ export default function Home() {
 			<DhwaniFeatures />
 			<section id="events"><EventsSection /></section>
 			<section id="music"><MusicSection /></section>
-			<section id="team"><TeamSection /></section>
+
+			{/* President Teaser - links to full team page */}
+			<section className="py-20 bg-black">
+				<div className="max-w-7xl mx-auto px-4 text-center">
+					<h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-500">
+						Meet Our President
+					</h2>
+					<p className="text-gray-400 max-w-2xl mx-auto mb-12">
+						Leading Dhwani with passion and rhythm.
+					</p>
+					<div className="flex justify-center mb-8">
+						<GlowingCard
+						/>
+					</div>
+					<Link href="/team" className="inline-block px-8 py-3 bg-white/10 hover:bg-white/20 rounded-full text-white font-medium transition-all duration-300 hover:scale-105">
+						Meet the Full Team →
+					</Link>
+				</div>
+			</section>
+
 			<section id="gallery"><GallerySection /></section>
 			<section id="news"><NewsSection /></section>
 			<section id="legacy"><LegacySection /></section>

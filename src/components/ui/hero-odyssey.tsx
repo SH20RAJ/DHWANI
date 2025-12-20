@@ -380,7 +380,7 @@ export const HeroSection: React.FC = () => {
               <a href="#hero" className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">Home</a>
               <a href="#events" className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">Events</a>
               <a href="#music" className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">Music</a>
-              <a href="#team" className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">Team</a>
+              <a href="/team" className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">Team</a>
               <a href="#gallery" className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">Gallery</a>
               <a href="#contact" className="px-4 py-2 text-sm hover:text-gray-300 transition-colors">Contact</a>
             </div>
@@ -425,7 +425,7 @@ export const HeroSection: React.FC = () => {
               <a href="#hero" className="px-6 py-3" onClick={() => setMobileMenuOpen(false)}>Home</a>
               <a href="#events" className="px-6 py-3" onClick={() => setMobileMenuOpen(false)}>Events</a>
               <a href="#music" className="px-6 py-3" onClick={() => setMobileMenuOpen(false)}>Music</a>
-              <a href="#team" className="px-6 py-3" onClick={() => setMobileMenuOpen(false)}>Team</a>
+              <a href="/team" className="px-6 py-3" onClick={() => setMobileMenuOpen(false)}>Team</a>
               <a href="#gallery" className="px-6 py-3" onClick={() => setMobileMenuOpen(false)}>Gallery</a>
               <a href="#contact" className="px-6 py-3" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             </div>
