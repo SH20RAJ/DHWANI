@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 	keywords: ["Dhwani", "Music Club", "BIT Mesra", "Band", "Music", "Events", "Bitotsav", "College Band", "Live Music", "Ranchi"],
 	authors: [{ name: "Dhwani Music Club" }],
 	creator: "Dhwani Music Club",
+	metadataBase: new URL("https://dhwani.shraj.workers.dev"),
 	openGraph: {
 		type: "website",
 		locale: "en_US",

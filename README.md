@@ -4,6 +4,8 @@
 
 Dhwani is the **music club of Birla Institute of Technology (BIT) Mesra in Ranchi, India**, with a celebrated history of over 60 years of musical excellence. The club serves as the primary organization for promoting and developing musical talent among BIT Mesra students.[1]
 
+- https://dhwani.strivio.world/
+
 **History & Legacy**
 
 The club celebrated its **60th anniversary in 2024**, marking six decades of melodic contributions to the campus and the broader music community. This milestone underscores Dhwani's establishment as one of the most enduring cultural organizations at the institute.[1]
