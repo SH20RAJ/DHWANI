@@ -91,7 +91,7 @@ export async function getTeam() {
     // Transform to match local shape if needed (e.g. mapping social links)
     return data.map((member: any) => ({
       ...member,
-      image: member.image.url,
+      image: member.image?.url || "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/attachments/gen-images/public/person-with-winter-hat-scarf-cold-5KFfWSpCqM4Ksf7yXgiVhxSweVw5tH.jpg",
       socialMedia: {
         instagram: member.instagramUrl,
         linkedin: member.linkedinUrl,
