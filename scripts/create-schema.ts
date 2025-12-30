@@ -54,7 +54,7 @@ const run = async () => {
                 relatedModelApiId: 'Asset',
                 reverseFieldApiId: 'teamMemberImage',
                 reverseFieldDisplayName: 'Team Member',
-            });
+            } as any);
             client.createSimpleField({
                 parentApiId: 'TeamMember',
                 type: SimpleFieldType.String,
@@ -129,7 +129,7 @@ const run = async () => {
             });
             client.createSimpleField({
                 parentApiId: 'Event',
-                type: SimpleFieldType.DateTime,
+                type: SimpleFieldType.Datetime,
                 apiId: 'date',
                 displayName: 'Date',
             });
@@ -223,7 +223,7 @@ const run = async () => {
                 relatedModelApiId: 'Asset',
                 reverseFieldApiId: 'postCoverImage',
                 reverseFieldDisplayName: 'Post Cover Image',
-            });
+            } as any);
         } catch (e) {
             console.log("Post setup step failed (might exist):", e);
         }
@@ -250,7 +250,7 @@ const run = async () => {
                 relatedModelApiId: 'Asset',
                 reverseFieldApiId: 'galleryImageRef',
                 reverseFieldDisplayName: 'Gallery Image Ref',
-            });
+            } as any);
             client.createSimpleField({
                 parentApiId: 'GalleryImage',
                 type: SimpleFieldType.Int,

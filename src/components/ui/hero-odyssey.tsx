@@ -6,10 +6,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from 'next/link';
 
-// Aurora Background Component (inline for simplicity if not imported)
+// Aurora Background Component
 const AuroraBackground = ({ className, children }: { className?: string, children: React.ReactNode }) => {
   return (
-    <div className={`relative flex flex-col h-[100vh] items-center justify-center bg-zinc-50 dark:bg-zinc-900 text-slate-950 transition-bg overflow-hidden ${className}`}>
+    <div className={`relative flex flex-col h-[100vh] items-center justify-center bg-zinc-50 dark:bg-zinc-900 text-slate-950 transition-bg overflow-hidden ${className || ''}`}>
       <div className="absolute inset-0 overflow-hidden">
         <div
           className={`
@@ -26,8 +26,7 @@ const AuroraBackground = ({ className, children }: { className?: string, childre
                 after:[background-size:200%,_100%] 
                 after:animate-aurora after:[background-attachment:fixed] after:mix-blend-difference
                 pointer-events-none
-                absolute -inset-[10px] opacity-50 will-change-transform`,
-            `
+                absolute -inset-[10px] opacity-50 will-change-transform
             `}
         ></div>
       </div>

@@ -57,7 +57,7 @@ async function uploadAsset(url: string) {
 
 async function seedTeam() {
     console.log('Seeding Team Members (Sequentially)...');
-    for (const member of teamMembers) {
+    for (const member of teamMembers as any[]) {
         try {
             let imageId = null;
             if (member.image) {
@@ -150,7 +150,7 @@ async function seedEvents() {
 
 async function seedPosts() {
     console.log('Seeding News (Sequentially)...');
-    for (const post of newsItems) {
+    for (const post of newsItems as any[]) {
         try {
             let imageId = null;
             if (post.coverImage) {
@@ -195,14 +195,14 @@ async function seedPosts() {
 
 async function seedGallery() {
     console.log('Seeding Gallery (Sequentially)...');
-    for (const item of galleryImages) {
+    for (const item of galleryImages as any[]) {
         try {
             let imageId = null;
             if (item.src) { // Correct property from fallback.ts
                 imageId = await uploadAsset(item.src);
             }
 
-            const colSpanStr = item.span?.match(/span-(\d)/);
+            const colSpanStr = (item.span || "").match(/span-(\d)/);
             const colSpan = colSpanStr ? parseInt(colSpanStr[1]) : 1;
 
             const data: any = {
@@ -225,10 +225,10 @@ async function seedGallery() {
                 gql`mutation PublishGalleryImage($id: ID!) { publishGalleryImage(where: { id: $id }, to: PUBLISHED) { id } }`,
                 { id }
             );
-            console.log(`Created & Published gallery image: ${item.title}`);
+            console.log(`Created & Published gallery image: ${item.alt}`);
             await wait(500);
         } catch (e: any) {
-            console.error(`Failed to create gallery image ${item.title}:`, e.message || e);
+            console.error(`Failed to create gallery image ${item.alt}:`, e.message || e);
         }
     }
 }

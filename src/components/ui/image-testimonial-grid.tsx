@@ -34,7 +34,7 @@ const MasonryGrid = React.forwardRef<HTMLDivElement, MasonryGridProps>(
           ease: "easeOut",
         },
       },
-    };
+    } as any;
 
     return (
       <div ref={ref} style={style} className={cn('w-full', className)} {...props}>
