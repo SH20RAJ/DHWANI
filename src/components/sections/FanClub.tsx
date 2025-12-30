@@ -108,7 +108,7 @@ export function FanClub() {
                         <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
                         <div className="flex items-center gap-1.5 text-white/20">
-                            Made with <Heart className="w-3 h-3 fill-current text-red-500/50" /> and Music
+                            Made with <Heart className="w-3 h-3 fill-current text-red-500/50" /> and Music by <a href='https://linkedin.com/in/sh20raj'>Shaswat</a>
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, Clock, Tag } from "lucide-react";
+import { ArrowUpRight, Clock } from "lucide-react";
 
 const newsItems = [
     {
@@ -44,10 +43,7 @@ export default function NewsPage() {
     return (
         <main className="min-h-screen bg-[#0a0a0a] text-[#e5e5e5]">
 
-            <header className="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center mix-blend-difference">
-                <Link href="/" className="text-2xl font-black italic tracking-tighter hover:scale-105 transition-transform">DHWANI.</Link>
-                <div className="text-xs font-mono uppercase tracking-widest">The Press</div>
-            </header>
+            {/* Header removed to favor global Navbar */}
 
             <div className="pt-32 pb-20 px-4 md:px-8 max-w-[1600px] mx-auto">
 

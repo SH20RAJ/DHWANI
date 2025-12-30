@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { Calendar, MapPin, Ticket, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 
 const events = [
     {
@@ -103,16 +102,11 @@ function EventCard({ event, index }: { event: any, index: number }) {
 export default function EventsPage() {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: containerRef });
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
     return (
         <main ref={containerRef} className="min-h-screen bg-black text-white selection:bg-blue-500/30">
 
-            {/* Navigation - Fixed with pointer event handling */}
-            <header className="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center mix-blend-difference pointer-events-none">
-                <Link href="/" className="text-2xl font-black italic tracking-tighter hover:scale-105 transition-transform pointer-events-auto cursor-pointer">DHWANI.</Link>
-                <div className="text-xs font-mono uppercase tracking-widest pointer-events-auto">Events & Gigs</div>
-            </header>
+            {/* Header removed to favor global Navbar */}
 
             {/* Hero Section */}
             <section className="relative pt-40 pb-20 px-4 md:px-8 overflow-hidden">

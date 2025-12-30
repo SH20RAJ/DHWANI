@@ -111,7 +111,7 @@ export function VoiceChat() {
   const [isExpanded, setIsExpanded] = useState(false)
 
   const handleJoin = () => {
-    window.open("https://discord.gg/your-discord-link", "_blank"); // Replace with actual Dhwani Discord link
+    window.open("https://discord.com/invite/bTExZKsh9u", "_blank"); // Replace with actual Dhwani Discord link
   }
 
   return (

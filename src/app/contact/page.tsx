@@ -1,18 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Phone, Globe } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { FanMail } from "@/components/sections/FanMail"; // Reusing the styled component but adding more context
+import { FanMail } from "@/components/sections/FanMail";
 
 export default function ContactPage() {
     return (
         <main className="min-h-screen bg-black text-white">
 
-            <header className="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center mix-blend-difference pointer-events-none">
-                <Link href="/" className="text-2xl font-black italic tracking-tighter hover:scale-105 transition-transform pointer-events-auto">DHWANI.</Link>
-                <div className="text-xs font-mono uppercase tracking-widest">Global Booking</div>
-            </header>
+            {/* Header removed to favor global Navbar */}
 
             {/* Top Section - Big Headline */}
             <section className="h-[50vh] flex flex-col items-center justify-center relative overflow-hidden">
@@ -83,25 +80,5 @@ export default function ContactPage() {
             </section>
 
         </main>
-    );
-}
-
-function ArrowUpRight(props: any) {
-    return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <path d="M7 7h10v10" />
-            <path d="M7 17 17 7" />
-        </svg>
     );
 }

@@ -13,17 +13,8 @@ export function HeroSection() {
       {/* Background Pattern */}
       <div className="w-full absolute h-full z-0 bg-[radial-gradient(circle,_#333_1px,_transparent_1px)] opacity-15 [background-size:20px_20px] pointer-events-none" />
 
-      {/* Navigation */}
-      <header className="flex justify-between items-center px-8 pt-8 relative z-10">
-        <div className="text-2xl font-black italic tracking-tighter">DHWANI.club</div>
-        <nav className="hidden md:flex gap-8 text-sm font-mono uppercase tracking-widest">
-          <Link href="/" className="text-white hover:text-blue-500 transition-colors">Index</Link>
-          <Link href="#studio" className="text-gray-400 hover:text-blue-500 transition-colors">Studio</Link>
-          <Link href="#legacy" className="text-gray-400 hover:text-blue-500 transition-colors">Legacy</Link>
-          <Link href="/lounge" className="text-blue-400 hover:text-blue-300 transition-colors font-bold">The Lounge</Link>
-          <Link href="#contact" className="text-gray-400 hover:text-blue-500 transition-colors">Contact</Link>
-        </nav>
-      </header>
+      {/* Header removed to use global Navbar */}
+      <div className="pt-24"></div>
 
       <main className="relative pt-12 pb-20 max-w-7xl mx-auto">
         <div className="flex relative gap-2 px-6 md:items-center w-full flex-col justify-center">
