@@ -5,6 +5,8 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from 'next/link';
+import { VoiceChat } from "../ui/audio-chat";
+import MusicArtwork from "../ui/music-artwork";
 
 // Aurora Background Component
 const AuroraBackground = ({ className, children }: { className?: string, children: React.ReactNode }) => {
@@ -117,15 +119,59 @@ export function HeroSection() {
           </Link>
         </motion.div>
 
+        {/* Featured Community Dashboard */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mt-20 w-full max-w-4xl"
+        >
+          <div className="relative group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-purple-500/5 pointer-events-none"></div>
+
+            {/* Label */}
+            <div className="absolute top-4 left-0 right-0 flex justify-center">
+              <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-white/10 text-[10px] uppercase tracking-widest text-zinc-400 font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                Live at the Studio
+              </span>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-between gap-12 pt-8">
+              {/* Voice Lounge */}
+              <div className="flex flex-col items-center flex-1">
+                <h3 className="text-zinc-400 text-xs uppercase tracking-widest mb-4 font-mono">Members Online</h3>
+                <VoiceChat />
+              </div>
+
+              {/* Vertical Divider (Desktop) */}
+              <div className="hidden md:block w-px h-32 bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+
+              {/* Now Playing */}
+              <div className="flex flex-col items-center flex-1">
+                <h3 className="text-zinc-400 text-xs uppercase tracking-widest mb-4 font-mono">Now Spinning</h3>
+                <div className="transform scale-90">
+                  <MusicArtwork
+                    artist="Dhwani Band"
+                    music="Campus Beats Vol. 1"
+                    albumArt="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=2670&auto=format&fit=crop"
+                    isSong={false}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Visual Soundwave Decoration */}
-        <div className="flex gap-1 items-end h-8 mt-12 opacity-50">
+        <div className="flex gap-1 items-end h-8 mt-12 opacity-30">
           {[...Array(10)].map((_, i) => (
             <motion.div
               key={i}
-              className="w-1 bg-blue-500/50 rounded-full"
+              className="w-1 bg-gradient-to-t from-blue-500 via-purple-500 to-transparent rounded-full"
               animate={{ height: ["20%", "80%", "20%"] }}
               transition={{
-                duration: 1,
+                duration: 1.5,
                 repeat: Infinity,
                 repeatType: "mirror",
                 ease: "easeInOut",

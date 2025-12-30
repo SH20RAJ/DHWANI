@@ -70,7 +70,7 @@ export const AuroraBackground = () => {
  * @param {React.ReactNode} props.children
  * @returns {JSX.Element} The rendered Bento Grid container.
  */
-export const BentoGrid = ({ children }: { children: React.ReactNode }) => {
+export const BentoGrid = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -84,7 +84,7 @@ export const BentoGrid = ({ children }: { children: React.ReactNode }) => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="grid grid-cols-1 md:grid-cols-6 gap-6 auto-rows-[280px] p-6"
+      className={`grid grid-cols-1 md:grid-cols-6 gap-6 auto-rows-[280px] p-6 ${className}`}
     >
       {children}
     </motion.div>
