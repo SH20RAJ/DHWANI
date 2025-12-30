@@ -2,8 +2,6 @@
 
 import { VoiceChat } from "@/components/ui/audio-chat";
 import MusicArtwork from "@/components/ui/music-artwork";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 
 export default function LoungePage() {
     return (
@@ -11,11 +9,7 @@ export default function LoungePage() {
             {/* Background Ambience */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/30 via-black to-black pointer-events-none"></div>
 
-            <Link href="/" className="inline-flex items-center gap-2 text-zinc-500 hover:text-white mb-12 transition-colors relative z-10">
-                <ArrowLeft className="w-4 h-4" /> Back to Home
-            </Link>
-
-            <div className="max-w-7xl mx-auto relative z-10">
+            <div className="max-w-7xl mx-auto mt-10 relative z-10">
                 <h1 className="text-4xl md:text-6xl font-black mb-4">The Lounge</h1>
                 <p className="text-zinc-400 mb-16 max-w-xl">
                     Chill, chat, and stream. The digital hangout for Dhwani members.
