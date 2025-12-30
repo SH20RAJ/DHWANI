@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Music4 } from 'lucide-react';
 
 const navItems = [
     { name: 'Home', path: '/' },
@@ -14,7 +14,7 @@ const navItems = [
     { name: 'Music', path: '/music' },
     { name: 'Team', path: '/team' },
     { name: 'Gallery', path: '/gallery' },
-    { name: 'Contact', path: '/contact' }, // Changed to dedicated page consistency
+    { name: 'Contact', path: '/contact' },
 ];
 
 export default function Navbar() {
@@ -24,7 +24,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+            setScrolled(window.scrollY > 50);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -35,48 +35,66 @@ export default function Navbar() {
             <motion.header
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4"
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className={cn(
+                    "fixed top-0 left-0 right-0 z-[100] flex justify-center py-4 px-4 transition-all duration-500 pointer-events-none", // pointer-events-none to let clicks pass through empty space
+                    scrolled ? "pt-4" : "pt-8"
+                )}
             >
+                {/* The "Mixer" Bar */}
                 <div
                     className={cn(
-                        "relative flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300 border border-white/5",
+                        "relative flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500 border pointer-events-auto", // pointer-events-auto to capture clicks on nav
                         scrolled
-                            ? "bg-black/40 backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] w-full max-w-5xl"
-                            : "bg-transparent w-full max-w-7xl backdrop-blur-none border-transparent"
+                            ? "bg-black/80 backdrop-blur-xl border-white/10 shadow-2xl w-full max-w-4xl"
+                            : "bg-transparent border-transparent w-full max-w-7xl"
                     )}
                 >
-                    {/* Logo Area */}
-                    <Link href="/" className="group flex items-center gap-3 z-50">
-                        <div className="relative w-8 h-8 flex items-center justify-center">
-                            {/* Animated Music Logo */}
-                            <div className="flex gap-0.5 items-end h-4 w-4">
-                                <span className="w-0.5 bg-white h-full animate-[music-bar_1s_ease-in-out_infinite]" />
-                                <span className="w-0.5 bg-white h-2/3 animate-[music-bar_1.2s_ease-in-out_infinite_0.1s]" />
-                                <span className="w-0.5 bg-white h-1/3 animate-[music-bar_0.8s_ease-in-out_infinite_0.2s]" />
-                                <span className="w-0.5 bg-white h-3/4 animate-[music-bar_1.1s_ease-in-out_infinite_0.3s]" />
-                            </div>
-                            <div className="absolute inset-0 bg-white/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Logo: Frequency Visualizer */}
+                    <Link href="/" className="group flex items-center gap-3 relative z-10">
+                        <div className="flex items-end gap-[2px] h-6 cursor-pointer">
+                            {[...Array(5)].map((_, i) => (
+                                <div
+                                    key={i}
+                                    className="w-1 bg-white rounded-t-sm animate-[music-bar_1s_ease-in-out_infinite]"
+                                    style={{
+                                        animationDelay: `${i * 0.1}s`,
+                                        height: '100%'
+                                    }}
+                                />
+                            ))}
                         </div>
-                        <span className="font-bold tracking-wider text-sm">DHWANI</span>
+                        <span className="font-black italic tracking-tighter text-xl group-hover:text-blue-400 transition-colors">DHWANI</span>
                     </Link>
 
-                    {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center gap-1">
+                    {/* Desktop Mixer Channels */}
+                    <nav className="hidden md:flex items-center gap-8">
                         {navItems.map((item) => {
                             const isActive = pathname === item.path;
                             return (
                                 <Link
                                     key={item.path}
                                     href={item.path}
-                                    className={cn(
-                                        "relative px-4 py-1.5 text-sm font-medium transition-colors hover:text-white rounded-full group overflow-hidden",
-                                        isActive ? "text-white bg-white/10" : "text-white/60"
-                                    )}
+                                    className="relative group flex flex-col items-center gap-1"
                                 >
-                                    <span className="relative z-10">{item.name}</span>
-                                    {/* Hover Glow Effect */}
-                                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-shimmer" />
+                                    {/* "Leve Meter" Dot */}
+                                    <div className={cn(
+                                        "w-1 h-1 rounded-full transition-all duration-300",
+                                        isActive ? "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" : "bg-neutral-700 group-hover:bg-white"
+                                    )}></div>
+
+                                    <span className={cn(
+                                        "text-xs font-mono uppercase tracking-widest transition-colors",
+                                        isActive ? "text-white font-bold" : "text-neutral-400 group-hover:text-white"
+                                    )}>
+                                        {item.name}
+                                    </span>
+
+                                    {/* Hover Fader BG */}
+                                    <div className={cn(
+                                        "absolute -inset-x-3 -inset-y-2 bg-white/5 rounded-lg -z-10 opacity-0 group-hover:opacity-100 transition-opacity",
+                                        isActive && "opacity-100 bg-white/10"
+                                    )}></div>
                                 </Link>
                             );
                         })}
@@ -85,71 +103,82 @@ export default function Navbar() {
                     {/* Mobile Menu Toggle */}
                     <button
                         onClick={() => setMobileMenuOpen(true)}
-                        className="md:hidden p-2 text-white/80 hover:text-white transition-colors"
+                        className="md:hidden p-2 text-white hover:text-blue-400 transition-colors pointer-events-auto"
                     >
                         <Menu size={24} />
                     </button>
                 </div>
             </motion.header>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile "Studio Overlay" Menu */}
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                        animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
-                        exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-                        className="fixed inset-0 z-[60] bg-black/90 flex flex-col justify-center items-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[150] bg-black/95 backdrop-blur-3xl flex flex-col justify-center items-center overflow-hidden"
                     >
+                        {/* Background Visuals */}
+                        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-[100px] animate-pulse"></div>
+                        </div>
+
                         <button
                             onClick={() => setMobileMenuOpen(false)}
-                            className="absolute top-6 right-6 p-4 text-white/60 hover:text-white transition-colors"
+                            className="absolute top-8 right-8 p-4 text-white/50 hover:text-white transition-colors z-20"
                         >
                             <X size={32} />
                         </button>
 
-                        <nav className="flex flex-col items-center gap-8">
-                            {navItems.map((item, i) => (
-                                <motion.div
-                                    key={item.path}
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: 0.1 + i * 0.05 }}
-                                >
-                                    <Link
-                                        href={item.path}
-                                        onClick={() => setMobileMenuOpen(false)}
-                                        className={cn(
-                                            "text-3xl font-light tracking-tight hover:text-white transition-colors",
-                                            pathname === item.path ? "text-white" : "text-white/40"
-                                        )}
-                                    >
-                                        {item.name}
-                                    </Link>
-                                </motion.div>
-                            ))}
-                        </nav>
+                        <div className="relative z-10 w-full max-w-md px-8">
+                            <div className="flex items-center gap-2 mb-12 opacity-50 justify-center">
+                                <Music4 className="w-5 h-5" />
+                                <span className="text-xs font-mono uppercase tracking-widest">Select Channel</span>
+                            </div>
 
-                        {/* Decorative background element for mobile */}
-                        <div className="absolute bottom-20 opacity-20 pointer-events-none">
-                            <div className="flex gap-2 items-end h-16">
-                                {[...Array(8)].map((_, i) => (
-                                    <div key={i} className="w-2 bg-white rounded-full animate-[music-bar_1.5s_ease-in-out_infinite]" style={{ animationDelay: `${i * 0.1}s` }} />
+                            <nav className="flex flex-col gap-6">
+                                {navItems.map((item, i) => (
+                                    <motion.div
+                                        key={item.path}
+                                        initial={{ x: -50, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: i * 0.05 }}
+                                    >
+                                        <Link
+                                            href={item.path}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className="group flex items-center justify-between py-2 border-b border-white/10 hover:border-white/50 transition-colors"
+                                        >
+                                            <span className={cn(
+                                                "text-4xl font-black uppercase tracking-tighter italic transition-all group-hover:pl-4",
+                                                pathname === item.path ? "text-blue-500" : "text-white"
+                                            )}>
+                                                {item.name}
+                                            </span>
+                                            <span className="text-xs font-mono text-neutral-600 group-hover:text-white transition-colors">
+                                                CH 0{i + 1}
+                                            </span>
+                                        </Link>
+                                    </motion.div>
                                 ))}
+                            </nav>
+
+                            <div className="mt-12 text-center">
+                                <p className="text-neutral-600 text-xs font-mono">
+                                    © 2025 DHWANI MUSIC CLUB<br />
+                                    EST. 1998
+                                </p>
                             </div>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            {/* Inline styles for custom animations */}
             <style jsx global>{`
                 @keyframes music-bar {
-                    0%, 100% { height: 20%; opacity: 0.5; }
-                    50% { height: 100%; opacity: 1; }
-                }
-                @keyframes shimmer {
-                    100% { transform: translateX(100%); }
+                    0%, 100% { height: 30%; }
+                    50% { height: 100%; }
                 }
             `}</style>
         </>
