@@ -108,10 +108,10 @@ export default function EventsPage() {
     return (
         <main ref={containerRef} className="min-h-screen bg-black text-white selection:bg-blue-500/30">
 
-            {/* Navigation */}
-            <header className="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center mix-blend-difference">
-                <Link href="/" className="text-2xl font-black italic tracking-tighter hover:scale-105 transition-transform">DHWANI.</Link>
-                <div className="text-xs font-mono uppercase tracking-widest">Events & Gigs</div>
+            {/* Navigation - Fixed with pointer event handling */}
+            <header className="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center mix-blend-difference pointer-events-none">
+                <Link href="/" className="text-2xl font-black italic tracking-tighter hover:scale-105 transition-transform pointer-events-auto cursor-pointer">DHWANI.</Link>
+                <div className="text-xs font-mono uppercase tracking-widest pointer-events-auto">Events & Gigs</div>
             </header>
 
             {/* Hero Section */}
