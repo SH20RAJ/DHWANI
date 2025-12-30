@@ -1,137 +1,127 @@
 'use client';
 
-import { Instagram, Linkedin, Youtube, Music } from 'lucide-react';
-
-const footerColumns = [
-  {
-    title: 'Explore',
-    links: [
-      { name: 'Home', href: '#hero' },
-      { name: 'Events', href: '#events' },
-      { name: 'Music', href: '#music' },
-      { name: 'Team', href: '#team' },
-      { name: 'Gallery', href: '#gallery' },
-    ],
-  },
-  {
-    title: 'Club',
-    links: [
-      { name: 'News', href: '#news' },
-      { name: 'Legacy', href: '#legacy' },
-      { name: 'Contact', href: '#contact' },
-      { name: 'Join Us', href: '#contact' },
-    ],
-  },
-  {
-    title: 'Socials',
-    links: [{ name: 'Instagram', href: 'https://instagram.com/dhwanibitmesra' }, { name: 'LinkedIn', href: '#' }, { name: 'YouTube', href: '#' }],
-  },
-];
-
-const legalLinks = [
-  'Privacy Policy',
-  'Terms of Service',
-  'Cookie Policy',
-];
+import { Instagram, Linkedin, Youtube, Music, Disc, Mic2, Heart } from 'lucide-react';
+import Link from 'next/link';
 
 const socialIcons = [
-  { icon: <Instagram className="h-5 w-5" />, href: 'https://instagram.com/dhwanibitmesra' },
-  { icon: <Linkedin className="h-5 w-5" />, href: '#' },
-  { icon: <Youtube className="h-5 w-5" />, href: '#' },
+  { icon: <Instagram className="h-5 w-5" />, href: 'https://instagram.com/dhwanibitmesra', label: 'Instagram' },
+  { icon: <Linkedin className="h-5 w-5" />, href: '#', label: 'LinkedIn' },
+  { icon: <Youtube className="h-5 w-5" />, href: '#', label: 'YouTube' },
+];
+
+const trackList = [
+  { title: "Home", href: "/", time: "03:42" },
+  { title: "News", href: "/news", time: "02:15" },
+  { title: "Events", href: "/events", time: "04:20" },
+  { title: "Music", href: "/music", time: "03:10" },
+  { title: "Team", href: "/team", time: "05:00" },
+  { title: "Gallery", href: "/gallery", time: "02:45" },
 ];
 
 export default function FooterNewsletter() {
   return (
-    <footer className="bg-black text-white relative w-full pt-20 pb-10 border-t border-white/10">
-      <div className="pointer-events-none absolute top-0 left-0 z-0 h-full w-full overflow-hidden">
-        <div className="bg-blue-600/10 absolute top-1/3 left-1/4 h-64 w-64 rounded-full blur-3xl" />
-        <div className="bg-purple-600/10 absolute right-1/4 bottom-1/4 h-80 w-80 rounded-full blur-3xl" />
-      </div>
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-effect mb-16 rounded-2xl p-8 md:p-12 border border-white/10 bg-white/5 backdrop-blur-sm">
-          <div className="grid items-center gap-8 md:grid-cols-2">
-            <div>
-              <h3 className="mb-4 text-2xl font-bold md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-                Stay tuned with Dhwani
-              </h3>
-              <p className="text-gray-400 mb-6">
-                Subscribe to our newsletter for the latest updates on events, jams, and musical releases.
-              </p>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="border-white/10 bg-black/50 text-white placeholder-gray-500 focus:ring-blue-500 rounded-lg border px-4 py-3 focus:ring-2 focus:outline-none w-full"
-                />
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 rounded-lg px-6 py-3 font-medium transition hover:scale-105 duration-200">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-            <div className="hidden justify-end md:flex relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-[100px] opacity-20"></div>
-              <Music className="w-48 h-48 text-white/20 relative z-10 rotate-12" />
-            </div>
+    <footer className="bg-neutral-950 text-white relative w-full pt-32 pb-10 overflow-hidden border-t border-white/5">
+      {/* Vinyl Record Visual */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 opacity-10 rotate-12 pointer-events-none">
+        <div className="w-[800px] h-[800px] border-[40px] border-neutral-800 rounded-full flex items-center justify-center">
+          <div className="w-[700px] h-[700px] border-[2px] border-neutral-800 rounded-full" />
+          <div className="w-[600px] h-[600px] border-[2px] border-neutral-800 rounded-full" />
+          <div className="w-[300px] h-[300px] bg-neutral-900 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-black rounded-full" />
           </div>
         </div>
-        <div className="mb-16 grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
-          <div className="col-span-2 lg:col-span-2">
-            <div className="mb-6 flex items-center space-x-2">
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 flex h-10 w-10 items-center justify-center rounded-lg">
-                <Music className="text-white h-6 w-6" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+          {/* Left: Brand & Newsletter */}
+          <div className="space-y-8">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center">
+                <Music className="w-6 h-6 fill-current" />
               </div>
-              <span className="text-xl font-bold">DHWANI</span>
+              <div>
+                <h2 className="text-2xl font-bold tracking-tight">DHWANI</h2>
+                <p className="text-white/40 text-sm font-mono tracking-widest">EST. 1998 • RANCHI</p>
+              </div>
             </div>
-            <p className="text-gray-400 mb-6 max-w-sm">
-              The Music Club of BIT Mesra. Where distinct notes come together to form a beautiful melody.
+
+            <p className="text-white/60 max-w-md text-lg leading-relaxed">
+              The rhythm of BIT Mesra. Where every note tells a story and every beat connects a community.
             </p>
-            <div className="flex space-x-4">
-              {socialIcons.map((item, i) => (
+
+            {/* Newsletter / "Fan Mail" */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-1 max-w-md flex items-center backdrop-blur-sm">
+              <input
+                type="email"
+                placeholder="Join the mailing list..."
+                className="bg-transparent border-none focus:ring-0 text-white placeholder-white/30 flex-1 px-4 py-2"
+              />
+              <button className="bg-white text-black px-6 py-2.5 rounded-xl font-medium hover:bg-neutral-200 transition-colors">
+                Sumbit
+              </button>
+            </div>
+
+            <div className="flex gap-4">
+              {socialIcons.map((social, i) => (
                 <a
                   key={i}
-                  href={item.href}
-                  className="bg-white/5 hover:bg-white/10 hover:text-blue-400 flex h-10 w-10 items-center justify-center rounded-full transition duration-300 text-white"
+                  href={social.href}
+                  className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-all hover:scale-110"
+                  aria-label={social.label}
                 >
-                  {item.icon}
+                  {social.icon}
                 </a>
               ))}
             </div>
           </div>
-          {footerColumns.map((col) => (
-            <div key={col.title}>
-              <h4 className="mb-4 text-lg font-semibold text-white">{col.title}</h4>
+
+          {/* Right: "Tracklist" Links */}
+          <div className="relative">
+            <div className="absolute -inset-4 bg-white/5 rounded-3xl -z-10 rotate-1" />
+            <div className="bg-neutral-900/50 backdrop-blur-md rounded-2xl border border-white/10 p-8">
+              <div className="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+                <h3 className="font-mono text-white/50 uppercase tracking-widest text-sm">Side A: Navigation</h3>
+                <Disc className="w-5 h-5 text-white/50 animate-spin-slow" />
+              </div>
               <ul className="space-y-3">
-                {col.links.map((link) => (
-                  <li key={typeof link === 'string' ? link : link.name}>
-                    <a
-                      href={typeof link === 'string' ? '#' : link.href}
-                      className="text-gray-400 hover:text-blue-400 transition duration-200 text-sm"
-                    >
-                      {typeof link === 'string' ? link : link.name}
-                    </a>
+                {trackList.map((track, i) => (
+                  <li key={i} className="group flex items-center justify-between hover:bg-white/5 p-2 rounded-lg transition-colors cursor-pointer">
+                    <Link href={track.href} className="flex items-center gap-4 flex-1">
+                      <span className="text-white/30 font-mono text-sm group-hover:text-amber-500 transition-colors">0{i + 1}</span>
+                      <span className="font-medium text-white/80 group-hover:text-white transition-colors">{track.title}</span>
+                    </Link>
+                    <span className="text-xs font-mono text-white/30 border border-white/10 px-2 py-0.5 rounded">{track.time}</span>
                   </li>
                 ))}
               </ul>
             </div>
-          ))}
+          </div>
         </div>
-        <div className="border-white/10 flex flex-col items-center justify-between border-t pt-8 md:flex-row">
-          <p className="text-gray-500 mb-4 text-sm md:mb-0">
-            © {new Date().getFullYear()} Dhwani Music Club. All rights reserved.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6">
-            {legalLinks.map((text) => (
-              <a
-                key={text}
-                href="#"
-                className="text-gray-500 hover:text-white transition duration-200 text-sm"
-              >
-                {text}
-              </a>
-            ))}
+
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-sm text-white/40">
+          <p>© {new Date().getFullYear()} Dhwani Music Club. All rights reserved.</p>
+          <div className="flex items-center gap-6 mt-4 md:mt-0">
+            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+            <div className="flex items-center gap-1.5 text-white/20">
+              Made with <Heart className="w-3 h-3 fill-current text-red-500/50" /> and Music
+            </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes spin-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 10s linear infinite;
+        }
+      `}</style>
     </footer>
   );
 }
