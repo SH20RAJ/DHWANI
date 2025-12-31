@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Camera, Film, Filter } from "lucide-react";
 
 // Mock adding years to the images for filtering purposes
@@ -65,13 +66,13 @@ export function ArchiveView({ initialImages }: { initialImages: any[] }) {
                         </button>
                         <div className="w-px h-4 bg-white/10"></div>
                         {years.map(year => (
-                            <button
+                            <Link
                                 key={year}
-                                onClick={() => setSelectedYear(year)}
-                                className={`text-sm font-bold uppercase tracking-widest transition-colors ${selectedYear === year ? "text-orange-500" : "text-neutral-600 hover:text-white"}`}
+                                href={`/archive/${year}`}
+                                className={`text-sm font-bold uppercase tracking-widest transition-colors text-neutral-600 hover:text-white`}
                             >
                                 {year}
-                            </button>
+                            </Link>
                         ))}
                     </div>
                 </div>
