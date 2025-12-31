@@ -6,14 +6,7 @@ import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 initOpenNextCloudflareForDev();
 
 const nextConfig: NextConfig = {
-	webpack: (config) => {
-		config.resolve.alias = {
-			...config.resolve.alias,
-			// Prevent Next.js from trying to patch setImmediate which is read-only in CF Workers
-			'next/dist/server/node-environment-extensions/fast-set-immediate.external': false,
-		};
-		return config;
-	},
+	
 	images: {
 		remotePatterns: [
 			{
