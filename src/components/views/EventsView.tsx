@@ -5,38 +5,8 @@ import { useRef } from "react";
 import Image from "next/image";
 import { Calendar, MapPin, Ticket, ArrowUpRight } from "lucide-react";
 
-const events = [
-    {
-        id: 1,
-        title: "Bitotsav Headliner '25",
-        date: "FEB 14",
-        time: "20:00 EST",
-        location: "Main Auditorium",
-        image: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=2574&auto=format&fit=crop",
-        status: "SELLING FAST",
-        type: "CONCERT"
-    },
-    {
-        id: 2,
-        title: "Unplugged: Rooftop Sessions",
-        date: "MAR 03",
-        time: "18:00 EST",
-        location: "IC Arena Roof",
-        image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2670&auto=format&fit=crop",
-        status: "RSVP OPEN",
-        type: "ACOUSTIC"
-    },
-    {
-        id: 3,
-        title: "Battle of Bands: Regionals",
-        date: "APR 10",
-        time: "14:00 EST",
-        location: "CAT Hall",
-        image: "https://images.unsplash.com/photo-1501612780327-45045538702b?q=80&w=2670&auto=format&fit=crop",
-        status: "REGISTRATION CLOSED",
-        type: "COMPETITION"
-    }
-];
+import { events } from "@/lib/events-data";
+import Link from "next/link";
 
 function EventCard({ event, index }: { event: any, index: number }) {
     return (
@@ -45,56 +15,57 @@ function EventCard({ event, index }: { event: any, index: number }) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.8 }}
             viewport={{ once: true }}
-            className="group relative w-full md:h-[400px] flex flex-col md:flex-row border-t border-white/10 hover:border-white/30 transition-colors"
+            className="group relative w-full border-t border-white/10 hover:border-white/30 transition-colors"
         >
-            {/* Date Column */}
-            <div className="md:w-1/4 py-8 md:py-12 px-4 flex flex-col justify-between border-r border-white/5 bg-black/50 backdrop-blur-sm group-hover:bg-white/5 transition-colors">
-                <div>
-                    <span className="inline-block px-3 py-1 mb-4 text-[10px] font-mono border border-white/20 rounded-full uppercase tracking-widest text-zinc-400">
-                        {event.type}
-                    </span>
-                    <h3 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-600 font-sans tracking-tighter">
-                        {event.date.split(" ")[0]}<br />
-                        <span className="text-stroke-2 text-white/0 lg:text-8xl">{event.date.split(" ")[1]}</span>
-                    </h3>
-                </div>
-                <div className="flex items-center gap-2 text-zinc-500 font-mono text-xs uppercase mt-4 md:mt-0">
-                    <Calendar className="w-3 h-3" />
-                    {event.time}
-                </div>
-            </div>
-
-            {/* Image & Title Column */}
-            <div className="flex-1 relative overflow-hidden flex flex-col justify-end p-8 md:p-12">
-                <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110">
-                    <Image src={event.image} alt={event.title} fill className="object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-500" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            <Link href={`/events/${event.slug}`} className="flex flex-col md:flex-row w-full md:h-[400px]">
+                {/* Date Column */}
+                <div className="md:w-1/4 py-8 md:py-12 px-4 flex flex-col justify-between border-r border-white/5 bg-black/50 backdrop-blur-sm group-hover:bg-white/5 transition-colors">
+                    <div>
+                        <span className="inline-block px-3 py-1 mb-4 text-[10px] font-mono border border-white/20 rounded-full uppercase tracking-widest text-zinc-400">
+                            {event.type}
+                        </span>
+                        <h3 className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-600 font-sans tracking-tighter">
+                            {event.date.split(" ")[0]}<br />
+                            <span className="text-stroke-2 text-white/0 lg:text-8xl">{event.date.split(" ")[1]}</span>
+                        </h3>
+                    </div>
+                    <div className="flex items-center gap-2 text-zinc-500 font-mono text-xs uppercase mt-4 md:mt-0">
+                        <Calendar className="w-3 h-3" />
+                        {event.time}
+                    </div>
                 </div>
 
-                <div className="relative z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <div className="flex justify-between items-end mb-4">
-                        <div>
-                            <div className="flex items-center gap-2 text-blue-400 mb-2 font-mono text-xs uppercase tracking-widest">
-                                <MapPin className="w-3 h-3" /> {event.location}
+                {/* Image & Title Column */}
+                <div className="flex-1 relative overflow-hidden flex flex-col justify-end p-8 md:p-12">
+                    <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110">
+                        <Image src={event.image} alt={event.title} fill className="object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                    </div>
+
+                    <div className="relative z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <div className="flex justify-between items-end mb-4">
+                            <div>
+                                <div className="flex items-center gap-2 text-blue-400 mb-2 font-mono text-xs uppercase tracking-widest">
+                                    <MapPin className="w-3 h-3" /> {event.location}
+                                </div>
+                                <h2 className="text-3xl md:text-5xl font-bold text-white max-w-2xl leading-tight">
+                                    {event.title}
+                                </h2>
                             </div>
-                            <h2 className="text-3xl md:text-5xl font-bold text-white max-w-2xl leading-tight">
-                                {event.title}
-                            </h2>
-                        </div>
-                        <div className="hidden md:block">
-                            <ArrowUpRight className="w-12 h-12 text-white/20 group-hover:text-white group-hover:rotate-45 transition-all duration-500" />
+                            <div className="hidden md:block">
+                                <ArrowUpRight className="w-12 h-12 text-white/20 group-hover:text-white group-hover:rotate-45 transition-all duration-500" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Action Column */}
-            <div className="md:w-1/6 border-l border-white/5 flex items-center justify-center p-6 bg-black">
-                <button className="w-full h-full py-4 md:py-0 border border-white/20 rounded-xl hover:bg-white hover:text-black transition-all duration-300 group/btn flex flex-col items-center justify-center gap-2">
-                    <Ticket className="w-5 h-5 group-hover/btn:-rotate-12 transition-transform" />
-                    <span className="font-bold text-sm uppercase tracking-widest">{event.status === "SELLING FAST" ? "Get Tickets" : "Details"}</span>
-                </button>
-            </div>
+                {/* Action Column */}
+                <div className="md:w-1/6 border-l border-white/5 flex items-center justify-center p-6 bg-black">
+                    <button className="w-full h-full py-4 md:py-0 border border-white/20 rounded-xl hover:bg-white hover:text-black transition-all duration-300 group/btn flex flex-col items-center justify-center gap-2">
+                        <Ticket className="w-5 h-5 group-hover/btn:-rotate-12 transition-transform" />
+                        <span className="font-bold text-sm uppercase tracking-widest">{event.status === "SELLING FAST" ? "Get Tickets" : "Details"}</span>
+                    </button>
+                </div>
         </motion.div>
     );
 }
