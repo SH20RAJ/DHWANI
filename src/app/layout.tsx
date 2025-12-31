@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -68,6 +69,7 @@ import Navbar from "@/components/ui/Navbar";
 
 import { NoiseOverlay } from "@/components/ui/noise-overlay";
 import { MagneticCursor } from "@/components/ui/magnetic-cursor";
+import { SecretManager } from "@/components/ui/secret-manager";
 
 export default function RootLayout({
 	children,
@@ -85,6 +87,7 @@ export default function RootLayout({
 				<MagneticCursor />
 				<Navbar />
 				{children}
+				<Analytics />
 			</body>
 		</html>
 	);
