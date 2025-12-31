@@ -62,3 +62,10 @@ As of December 2025, Dhwani continues to remain active with ongoing workshops, s
 [8](https://in.linkedin.com/in/ramendrapriyanshu)
 [9](https://www.collegebatch.com/reviews/34158-birla-institute-of-technology-mesra-ranchi)
 [10](https://www.bkfindia.in/dhwani/)
+
+**Design System**
+
+The website follows a strict design language defined in our [Design System](./src/design-system.json).
+- **Theme**: Dark Mode (OKLCH)
+- **Typography**: Geist Sans & Mono
+- **Core Visuals**: Noise, Blur, Motion

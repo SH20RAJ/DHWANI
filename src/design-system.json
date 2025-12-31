@@ -1,0 +1,79 @@
+{
+    "name": "Dhwani Design System",
+    "description": "A comprehensive design system for the Dhwani Music Club website, focusing on a dark, immersive, and musical aesthetic.",
+    "version": "1.0.0",
+    "tokens": {
+        "colors": {
+            "mode": "dark",
+            "space": "oklch",
+            "palette": {
+                "background": "oklch(0.145 0 0)",
+                "foreground": "oklch(0.985 0 0)",
+                "primary": "oklch(0.922 0 0)",
+                "secondary": "oklch(0.269 0 0)",
+                "accent": {
+                    "base": "oklch(0.269 0 0)",
+                    "blue": "bg-blue-500",
+                    "orange": "text-orange-500",
+                    "green": "text-green-500",
+                    "purple": "border-purple-500"
+                },
+                "border": "oklch(1 0 0 / 10%)",
+                "muted": {
+                    "base": "oklch(0.269 0 0)",
+                    "foreground": "oklch(0.708 0 0)"
+                }
+            }
+        },
+        "typography": {
+            "fonts": {
+                "sans": "Geist Sans",
+                "mono": "Geist Mono"
+            },
+            "styles": {
+                "heading-hero": "text-[15vw] font-black tracking-tighter leading-[0.8]",
+                "heading-section": "text-6xl md:text-8xl font-black uppercase tracking-tighter",
+                "label": "text-xs font-mono uppercase tracking-widest",
+                "body": "text-base leading-relaxed text-neutral-400"
+            }
+        },
+        "spacing": {
+            "radius": "0.625rem",
+            "container": "max-w-7xl mx-auto px-4 md:px-8",
+            "section-padding": "pt-40 pb-20"
+        },
+        "animation": {
+            "engine": "framer-motion",
+            "transitions": {
+                "default": "duration-500 ease-in-out",
+                "smooth": "duration: 0.8, ease: [0.16, 1, 0.3, 1]",
+                "hover": "scale-105"
+            },
+            "custom": {
+                "spin-slow": "spin-slow 10s linear infinite",
+                "music-bar": "music-bar 1s ease-in-out infinite"
+            }
+        }
+    },
+    "components": {
+        "navbar": {
+            "style": "floating dock",
+            "features": [
+                "backdrop-blur-xl",
+                "pill-shape",
+                "interactive-hover"
+            ]
+        },
+        "cards": {
+            "style": "bento-grid / masonry",
+            "interaction": "hover-lift, gradient-overlay, image-scale"
+        },
+        "buttons": {
+            "style": "uppercase mono tracking-widest border border-white/20 hover:bg-white hover:text-black"
+        },
+        "visuals": {
+            "noise": "global noise overlay",
+            "cursor": "magnetic custom cursor"
+        }
+    }
+}
