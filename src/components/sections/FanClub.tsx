@@ -15,7 +15,7 @@ const trackList = [
     { title: "Events", href: "/events", time: "04:20" },
     { title: "Music", href: "/music", time: "03:10" },
     { title: "Team", href: "/team", time: "05:00" },
-    { title: "Gallery", href: "/gallery", time: "02:45" },
+    { title: "Archive", href: "/archive", time: "02:45" },
 ];
 
 export function FanClub() {
