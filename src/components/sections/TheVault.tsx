@@ -1,49 +1,32 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Disc, Mic2, Music, Radio, Trophy, Star } from "lucide-react";
 import Image from "next/image";
+import { Milestone } from "@/lib/types";
 
-const milestones = [
-    {
-        year: "1998",
-        title: "The First Jam",
-        description: "Dhwani is founded in a small dorm room in Hostel 6. First official performance at the freshers' night.",
-        icon: Mic2,
-        image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2670&auto=format&fit=crop"
-    },
-    {
-        year: "2005",
-        title: "Bitotsav Debut",
-        description: "The club headlines the main stage of Bitotsav for the first time, establishing itself as the premier music society.",
-        icon: Star,
-        image: "https://images.unsplash.com/photo-1501612780327-45045538702b?q=80&w=2670&auto=format&fit=crop"
-    },
-    {
-        year: "2012",
-        title: "Battle of Bands Victory",
-        description: "Dhwani's metal wing, 'Iron Raga', wins the regional IIT Kharagpur Spring Fest competition.",
-        icon: Trophy,
-        image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=2670&auto=format&fit=crop"
-    },
-    {
-        year: "2018",
-        title: "Studio 404 Opened",
-        description: "Launch of our fully soundproofed jam room and recording studio in the Activity Centre.",
-        icon: Radio,
-        image: "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=2670&auto=format&fit=crop"
-    },
-    {
-        year: "2024",
-        title: "Digital Era",
-        description: "Dhwani launches its own streaming platform for original student compositions.",
-        icon: Music,
-        image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2670&auto=format&fit=crop"
-    }
-];
+// Map icon names back to components if passed as strings, or expect objects
+// For simplicity, we'll assume the parent passes the component or we map it here if it's serializable.
+// Since we are creating the data in page.tsx (Server Component), we can pass Lucide components directly? 
+// No, Server to Client props must be serializable. Lucide icons are functions, so they are not serializable.
+// We should pass icon names and map them here.
 
-export function TheVault() {
+const iconMap: Record<string, any> = {
+    Mic2, Star, Trophy, Radio, Music
+};
+
+interface TheVaultProps {
+    milestones: {
+        year: string;
+        title: string;
+        description: string;
+        iconName: string; // Changed from icon object to string name for serialization
+        image: string;
+    }[];
+}
+
+export function TheVault({ milestones }: TheVaultProps) {
     return (
         <section className="bg-neutral-950 py-32 relative overflow-hidden" id="legacy">
             {/* Background Noise/Texture */}
@@ -69,6 +52,8 @@ export function TheVault() {
                     <div className="space-y-24">
                         {milestones.map((item, index) => {
                             const isEven = index % 2 === 0;
+                            const IconComponent = iconMap[item.iconName] || Music;
+
                             return (
                                 <motion.div
                                     key={index}
@@ -84,7 +69,7 @@ export function TheVault() {
                                     {/* Center Node (The Plug) */}
                                     <div className="absolute left-8 md:left-1/2 -translate-x-1/2 md:translate-x-[-50%] z-20">
                                         <div className="w-16 h-16 rounded-full bg-neutral-900 border-4 border-neutral-800 flex items-center justify-center shadow-2xl relative group">
-                                            <item.icon className="w-6 h-6 text-neutral-500 group-hover:text-indigo-400 transition-colors" />
+                                            <IconComponent className="w-6 h-6 text-neutral-500 group-hover:text-indigo-400 transition-colors" />
                                             {/* Glowing ring */}
                                             <div className="absolute inset-0 rounded-full border border-white/20 scale-125 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
                                         </div>

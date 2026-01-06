@@ -85,18 +85,18 @@ export function HeroSection() {
         <div className="md:px-20 px-6 gap-12 items-end md:flex pt-12 z-20">
           {/* Interactive Music Artwork (Replaces static image) */}
           <div className="relative w-full md:w-auto mb-8 md:mb-0">
-             <div className="relative z-10">
-                <MusicArtwork 
-                    artist="Dhwani" 
-                    music="Anthem Vol. 1" 
-                    albumArt="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=2670&auto=format&fit=crop"
-                    isSong={false}
-                />
-             </div>
-             {/* Decorative 'Lounge' Link styled as a sticker near the vinyl */}
-             <Link href="/lounge" className="absolute -bottom-6 -right-6 z-0 px-6 py-2 bg-white text-black font-black uppercase italic -rotate-6 hover:rotate-0 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                Enter Lounge ↗
-             </Link>
+            <div className="relative z-10">
+              <MusicArtwork
+                artist="Dhwani"
+                music="Anthem Vol. 1"
+                albumArt="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=2670&auto=format&fit=crop"
+                isSong={false}
+              />
+            </div>
+            {/* Decorative 'Lounge' Link styled as a sticker near the vinyl */}
+            <Link href="/lounge" className="absolute -bottom-4 -right-8 z-30 px-6 py-2 bg-white text-black font-black uppercase italic -rotate-3 hover:rotate-0 transition-transform duration-300 shadow-xl [clip-path:polygon(0_0,100%_0,100%_100%,5%_100%)] hover:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]">
+              Enter Lounge ↗
+            </Link>
           </div>
 
           <p className="text-xs text-zinc-500 md:text-sm pt-8 leading-relaxed max-w-md">
@@ -117,11 +117,11 @@ export function HeroSection() {
           </div>
         </div>
       </main>
-        
+
       {/* Audio Visualizer at the very bottom */}
       <div className="relative w-full h-[100px] mt-auto z-10 pointer-events-none">
-         <AudioVisualizer />
-         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+        <AudioVisualizer />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
       </div>
 
     </div>

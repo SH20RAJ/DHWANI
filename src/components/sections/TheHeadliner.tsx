@@ -5,8 +5,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Quote } from "lucide-react";
+import { HeadlinerData } from "@/lib/types";
 
-export function TheHeadliner() {
+export function TheHeadliner({ data }: { data: HeadlinerData }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -48,8 +49,8 @@ export function TheHeadliner() {
                                     {/* Gold Label / Image */}
                                     <div className="relative w-1/2 h-1/2 rounded-full overflow-hidden border-4 border-yellow-600/50 z-10">
                                         <Image
-                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=512&h=512&q=80"
-                                            alt="President"
+                                            src={data.image}
+                                            alt={data.name}
                                             fill
                                             className="object-cover"
                                         />
@@ -80,8 +81,8 @@ export function TheHeadliner() {
                             transition={{ delay: 0.2 }}
                             className="text-5xl md:text-7xl font-black text-white leading-tight"
                         >
-                            Lead with <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Rhythm.</span>
+                            {data.tagline} <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">{data.subTagline}</span>
                         </motion.h2>
 
                         <motion.div
@@ -92,12 +93,12 @@ export function TheHeadliner() {
                             className="space-y-6"
                         >
                             <p className="text-xl text-neutral-400 leading-relaxed font-light">
-                                "Music isn't just about what you hear, it's about what you invoke in others. At Dhwani, we aren't just a club; we are an orchestra of innovation."
+                                "{data.quote}"
                             </p>
 
                             <div>
-                                <h3 className="text-2xl font-bold text-white">Ramendra Proytanshu</h3>
-                                <p className="text-yellow-500/80 font-mono text-sm mt-1 uppercase tracking-widest">President • Drummer • Visionary</p>
+                                <h3 className="text-2xl font-bold text-white">{data.name}</h3>
+                                <p className="text-yellow-500/80 font-mono text-sm mt-1 uppercase tracking-widest">{data.role}</p>
                             </div>
                         </motion.div>
 
