@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Disc } from "lucide-react";
 import { useRef } from "react";
+import Link from "next/link";
 
 const CATEGORIES = [
     {
@@ -88,7 +89,7 @@ function Manifesto() {
              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent to-indigo-500" />
             <p className="text-3xl md:text-5xl font-light leading-tight text-zinc-300 mt-24">
                 <span className="text-white font-bold italic">Music is not just sound.</span> It is the architecture of emotion. 
-                At Naad '26, we don't just play instruments; we construct <span className="text-indigo-400">universes</span>.
+                At Naad &apos;26, we don&apos;t just play instruments; we construct <span className="text-indigo-400">universes</span>.
             </p>
         </section>
     )
@@ -169,9 +170,9 @@ function Footer() {
                  <p className="text-2xl md:text-4xl font-light text-zinc-400 mb-12 tracking-tight">
                      Create. Compete. Conquer.
                  </p>
-                 <button className="px-12 py-6 bg-white text-black text-xl font-bold rounded-full hover:scale-105 transition-transform hover:bg-zinc-200 shadow-[0_0_50px_-10px_rgba(255,255,255,0.3)]">
-                     Join The Waitlist
-                 </button>
+                 <Link href="/naad/register" className="px-12 py-6 bg-white text-black text-xl font-bold rounded-full hover:scale-105 transition-transform hover:bg-zinc-200 shadow-[0_0_50px_-10px_rgba(255,255,255,0.3)]">
+                     Register for NAAD
+                 </Link>
              </div>
         </section>
     )
